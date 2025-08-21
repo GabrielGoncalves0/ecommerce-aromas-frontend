@@ -39,7 +39,7 @@ const Header = () => {
                             Home
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
                         </Link>
-                        
+
                         <div className="relative group">
                             <button className="flex items-center space-x-1 font-medium text-text-primary hover:text-primary-600 transition-colors group">
                                 <span>Produtos</span>
@@ -53,38 +53,37 @@ const Header = () => {
                             {/* Dropdown Menu Melhorado */}
                             <div className="absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-primary-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 overflow-hidden">
                                 <div className="p-4 space-y-1">
-                                    <ProductCard 
+                                    <ProductCard
                                         href="/produtos/velas"
-                                        icon="mdi:candle"
+                                        icon="ri:candle-line"
+                                        iconWidth={30}
+                                        iconHeight={30}
                                         title="Velas Aromáticas"
                                         description="Fragrâncias exclusivas e duradouras"
                                         variant="default"
                                     />
-                                    <ProductCard 
+                                    <ProductCard
                                         href="/produtos/sabonetes"
-                                        icon="mdi:soap"
+                                        icon="game-icons:soap"
+                                        iconWidth={30}
+                                        iconHeight={30}
                                         title="Sabonetes Artesanais"
                                         description="Aromaterapia natural para o corpo"
                                         variant="default"
                                     />
-                                    <ProductCard 
+                                    <ProductCard
                                         href="/produtos/difusores"
-                                        icon="mdi:air-humidifier"
+                                        icon="hugeicons:potion"
+                                        iconWidth={30}
+                                        iconHeight={30}
                                         title="Difusores de Ambiente"
                                         description="Transforme qualquer espaço"
-                                        variant="default"
-                                    />
-                                    <ProductCard 
-                                        href="/produtos/oleos"
-                                        icon="mdi:bottle-tonic"
-                                        title="Óleos Essenciais"
-                                        description="Essências puras da natureza"
                                         variant="default"
                                     />
                                 </div>
                             </div>
                         </div>
-                        
+
                         <Link href="/sobre" className="font-medium text-text-primary hover:text-primary-600 transition-colors relative group">
                             Sobre
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
@@ -100,7 +99,7 @@ const Header = () => {
                         <IconButton variant="ghost" className="hover:bg-primary-100/50">
                             <Icon icon="mdi:magnify" width="22" height="22" />
                         </IconButton>
-                        
+
                         <div className="relative">
                             <IconButton variant="ghost" className="hover:bg-primary-100/50">
                                 <Icon icon="mdi:cart-outline" width="22" height="22" />
@@ -109,7 +108,7 @@ const Header = () => {
                                 3
                             </Badge>
                         </div>
-                        
+
                         <IconButton variant="ghost" className="hover:bg-primary-100/50">
                             <Icon icon="mdi:account-outline" width="22" height="22" />
                         </IconButton>
@@ -126,11 +125,11 @@ const Header = () => {
                                 3
                             </Badge>
                         </div>
-                        
+
                         <IconButton size="sm" variant="ghost">
                             <Icon icon="mdi:account-outline" width="20" height="20" />
                         </IconButton>
-                        
+
                         {/* Mobile Menu Button */}
                         <IconButton size="sm" onClick={toggleMobileMenu} variant="ghost">
                             <Icon icon={isMobileMenuOpen ? 'mdi:close' : 'mdi:menu'} width="20" height="20" />
@@ -144,21 +143,21 @@ const Header = () => {
                         <Link href="/" className="block py-3 px-4 font-medium text-text-primary hover:bg-primary-100/50 rounded-lg mx-2 transition-colors">
                             Home
                         </Link>
-                        
+
                         <div className="mx-2">
-                            <button 
+                            <button
                                 onClick={toggleMobileDropdown}
                                 className="w-full flex items-center justify-between py-3 px-4 font-medium text-text-primary hover:bg-primary-100/50 rounded-lg transition-colors"
                             >
                                 <span>Produtos</span>
-                                <Icon 
+                                <Icon
                                     icon={isMobileDropdownOpen ? 'mdi:chevron-up' : 'mdi:chevron-down'}
-                                    width="20" 
-                                    height="20" 
-                                    className="transition-transform duration-300" 
+                                    width="20"
+                                    height="20"
+                                    className="transition-transform duration-300"
                                 />
                             </button>
-                            
+
                             <div className={`overflow-hidden transition-all duration-300 ${!isMobileDropdownOpen ? 'max-h-0' : 'max-h-96'}`}>
                                 <div className="pl-4 py-2 space-y-1">
                                     <Link href="/produtos/velas" className="block py-2 px-4 text-text-secondary hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-colors">
@@ -176,7 +175,7 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <Link href="/sobre" className="block py-3 px-4 font-medium text-text-primary hover:bg-primary-100/50 rounded-lg mx-2 transition-colors">
                             Sobre
                         </Link>

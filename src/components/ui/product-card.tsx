@@ -3,14 +3,27 @@ import { Icon } from '@iconify/react'
 
 interface ProductCardProps {
   href: string
-  icon: string
+  icon?: string
   title: string
   description: string
   className?: string
   variant?: 'default' | 'compact' | 'featured'
+  iconWidth?: string | number
+  iconHeight?: string | number
+  iconColor?: string
 }
 
-const ProductCard = ({ href, icon, title, description, className = '', variant = 'default' }: ProductCardProps) => {
+const ProductCard = ({ 
+  href, 
+  icon, 
+  title, 
+  description, 
+  className = '', 
+  variant = 'default',
+  iconWidth,
+  iconHeight,
+  iconColor
+}: ProductCardProps) => {
   const variants = {
     default: {
       container: 'flex items-center p-4 rounded-xl hover:bg-primary-100/40 transition-all duration-300 group/item hover:shadow-md hover:scale-[1.02]',
@@ -34,6 +47,22 @@ const ProductCard = ({ href, icon, title, description, className = '', variant =
 
   const currentVariant = variants[variant]
 
+
+  const getDefaultIconSize = () => {
+    switch (variant) {
+      case 'compact': return { width: "20", height: "20" }
+      case 'featured': return { width: "28", height: "28" }
+      default: return { width: "24", height: "24" }
+    }
+  }
+
+  const defaultSize = getDefaultIconSize()
+  const iconProps = {
+    width: iconWidth || defaultSize.width,
+    height: iconHeight || defaultSize.height,
+    ...(iconColor && { style: { color: iconColor } })
+  }
+
   if (variant === 'featured') {
     return (
       <Link href={href} className={`block ${currentVariant.container} ${className}`}>
@@ -41,9 +70,11 @@ const ProductCard = ({ href, icon, title, description, className = '', variant =
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-100/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500"></div>
 
         <div className="relative z-10 text-center">
-          <div className={`${currentVariant.iconContainer} mx-auto`}>
-            <Icon icon={icon} width="28" height="28" />
-          </div>
+          {icon && (
+            <div className={`${currentVariant.iconContainer} mx-auto`}>
+              <Icon icon={icon} {...iconProps} />
+            </div>
+          )}
           <div className={currentVariant.title}>
             {title}
           </div>
@@ -57,9 +88,11 @@ const ProductCard = ({ href, icon, title, description, className = '', variant =
 
   return (
     <Link href={href} className={`${currentVariant.container} ${className}`}>
-      <div className={currentVariant.iconContainer}>
-        <Icon icon={icon} width={variant === 'compact' ? "20" : "24"} height={variant === 'compact' ? "20" : "24"} />
-      </div>
+      {icon && (
+        <div className={currentVariant.iconContainer}>
+          <Icon icon={icon} {...iconProps} />
+        </div>
+      )}
       <div className="flex-1">
         <div className={currentVariant.title}>
           {title}
