@@ -1,12 +1,9 @@
 "use client";
 
 import { Button, FeatureCard, Section, Container, Grid, Heading } from "@/components/ui";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import ProductCarousel from "@/components/ProductCarousel";
 
 export default function Home() {
-  const [currentImage, setCurrentImage] = useState(0);
-
   const products = [
     {
       src: "/img/sabonetes.jpg",
@@ -27,14 +24,6 @@ export default function Home() {
       description: "Elegância em cada detalhe"
     }
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % products.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [products.length]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -74,65 +63,15 @@ export default function Home() {
             </div>
 
             {/* Carrossel de Produtos */}
-            <div className="relative">
-              <div className="relative w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-                {products.map((product, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImage ? 'opacity-100' : 'opacity-0'
-                      }`}
-                  >
-                    <Image
-                      src={product.src}
-                      alt={product.alt}
-                      fill
-                      className="object-cover"
-                      priority={index === 0}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
-                      <p className="text-lg opacity-90">{product.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Indicadores */}
-              <div className="flex justify-center mt-6 gap-3">
-                {products.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImage(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImage
-                      ? 'bg-primary-600 scale-125'
-                      : 'bg-primary-300 hover:bg-primary-400'
-                      }`}
-                  />
-                ))}
-              </div>
-
-              {/* Mini preview dos próximos produtos */}
-              <div className="flex justify-center mt-4 gap-2">
-                {products.map((product, index) => (
-                  <div
-                    key={index}
-                    className={`relative w-16 h-16 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${index === currentImage
-                      ? 'ring-2 ring-primary-600 scale-110'
-                      : 'opacity-60 hover:opacity-80'
-                      }`}
-                    onClick={() => setCurrentImage(index)}
-                  >
-                    <Image
-                      src={product.src}
-                      alt={product.alt}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ProductCarousel 
+              products={products}
+              height="h-[500px]"
+              autoplayDelay={4000}
+              showNavigation={false}
+              showPagination={false}
+              showButton={false}
+              effect="fade"
+            />
           </div>
         </Container>
       </Section>
