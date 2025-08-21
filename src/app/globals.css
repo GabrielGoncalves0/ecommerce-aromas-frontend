@@ -1,13 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5E9E2;
+  --layout: #F7E1D4;
+
+  --text-primary: #4F4A4A;
+  --text-secondary: #6B6666 --layout: #F7E1D4;
+
+  --primary: #E5D5D5;
+  --primary-100: #f7dad5;
+  --primary-200: #eab4aa;
+  --primary-300: #dfa093;
+  --primary-400: #d18d7f;
+  --primary-500: #B98C85;
+  --primary-600: #a3726c;
+  --primary-700: #875b57;
+  --primary-800: #6c4745;
+  --primary-900: #523432;
 }
 
 @theme inline {
+  /* Layout */
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-layout: var(--layout);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  /* Colors */
+  --color-primary: var(--primary);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -15,12 +48,33 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --text-primary: #ededed;
   }
+}
+
+@layer base {
+  a {
+    @apply text-text-primary hover:text-primary-500;
+  }
+}
+
+header {
+  background: var(--layout);
+  color: var(--text-primary);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .logo-link:hover {
+    color: var(--text-primary);
+  }
+
+  .icon:hover {
+    color: var(--primary-500);
+    transform: scale(1.15);
+    transition: transform 200ms ease-in-out;
+  }
 }
