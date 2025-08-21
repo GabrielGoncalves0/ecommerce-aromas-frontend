@@ -26,7 +26,7 @@ const Typography = ({ children, variant = 'body', color = 'primary', className =
     muted: 'text-text-secondary/70'
   }
 
-  const Component = variant.startsWith('h') ? variant as keyof JSX.IntrinsicElements : 'p'
+  const Component = variant.startsWith('h') ? (variant as keyof React.JSX.IntrinsicElements) : 'p'
 
   return (
     <Component className={`${variantClasses[variant]} ${colorClasses[color]} ${className}`}>
