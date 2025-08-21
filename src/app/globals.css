@@ -1,70 +1,155 @@
 @import "tailwindcss";
 
-:root {
-  --background: #F5E9E2;
-  --layout: #F7E1D4;
+@theme {
+  --color-background: #FDFCFB;
+  --color-layout: #FFFFFF;
+  --color-surface: #F8F6F4;
+  --color-surface-soft: #F3F1EE;
 
-  --text-primary: #4F4A4A;
-  --text-secondary: #6B6666;
+  --color-text-primary: #2D2A26;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #9B9B9B;
 
-  --primary: #E5D5D5;
-  --primary-100: #f7dad5;
-  --primary-200: #eab4aa;
-  --primary-300: #dfa093;
-  --primary-400: #d18d7f;
-  --primary-500: #B98C85;
-  --primary-600: #a3726c;
-  --primary-700: #875b57;
-  --primary-800: #6c4745;
-  --primary-900: #523432;
+  /* Primary Colors */
+  --color-primary: #D4A574;
+  --color-primary-50: #FDF9F4;
+  --color-primary-100: #F9EFE1;
+  --color-primary-200: #F0DCC0;
+  --color-primary-300: #E6C89F;
+  --color-primary-400: #DCB57E;
+  --color-primary-500: #D4A574;
+  --color-primary-600: #C0935D;
+  --color-primary-700: #A67E4D;
+  --color-primary-800: #8B693E;
+  --color-primary-900: #6B4F2E;
+
+  /* Secondary Colors */
+  --color-secondary: #8B7355;
+  --color-secondary-100: #F0ECE6;
+  --color-secondary-200: #D9CDB8;
+  --color-secondary-300: #C2AE8A;
+  --color-secondary-400: #AB8F5C;
+  --color-secondary-500: #8B7355;
+  --color-secondary-600: #6B5742;
+  --color-secondary-700: #4B3B2F;
+
+  /* Accent Colors */
+  --color-accent: #A0937D;
+  --color-accent-light: #C9BFA8;
+  --color-accent-dark: #766B56;
+
+  /* Status Colors */
+  --color-success: #6B8E23;
+  --color-warning: #FF8C00;
+  --color-error: #DC2626;
+  --color-info: #0891B2;
+
+  /* Custom Shadows */
+  --shadow-elegant: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-elegant-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Font Families */
+  --font-family-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-family-mono: var(--font-geist-mono), monospace;
+
+  /* Custom Animations */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+  --animate-scale-in: scaleIn 0.2s ease-out;
 }
 
-@theme inline {
-  /* Layout */
-  --color-background: var(--background);
-  --color-layout: var(--layout);
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
-  /* Text */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
+@keyframes slideUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
 
-  /* Colors */
-  --color-primary: var(--primary);
-  --color-primary-100: var(--primary-100);
-  --color-primary-200: var(--primary-200);
-  --color-primary-300: var(--primary-300);
-  --color-primary-400: var(--primary-400);
-  --color-primary-500: var(--primary-500);
-  --color-primary-600: var(--primary-600);
-  --color-primary-700: var(--primary-700);
-  --color-primary-800: var(--primary-800);
-  --color-primary-900: var(--primary-900);
+@keyframes scaleIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
 
-  /* Fonts */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #FDFCFB;
+  --layout: #FFFFFF;
+  --surface: #F8F6F4;
+  --surface-soft: #F3F1EE;
+
+  --text-primary: #2D2A26;
+  --text-secondary: #6B6B6B;
+  --text-muted: #9B9B9B;
+
+  /* Paleta Luxuosa para Aromas */
+  --primary: #D4A574;
+  --primary-50: #FDF9F4;
+  --primary-100: #F9EFE1;
+  --primary-200: #F0DCC0;
+  --primary-300: #E6C89F;
+  --primary-400: #DCB57E;
+  --primary-500: #D4A574;
+  --primary-600: #C0935D;
+  --primary-700: #A67E4D;
+  --primary-800: #8B693E;
+  --primary-900: #6B4F2E;
+
+  /* Cores Secundárias Elegantes */
+  --secondary: #8B7355;
+  --secondary-100: #F0ECE6;
+  --secondary-200: #D9CDB8;
+  --secondary-300: #C2AE8A;
+  --secondary-400: #AB8F5C;
+  --secondary-500: #8B7355;
+  --secondary-600: #6B5742;
+  --secondary-700: #4B3B2F;
+
+  /* Cores de Apoio */
+  --accent: #A0937D;
+  --accent-light: #C9BFA8;
+  --accent-dark: #766B56;
+
+  /* Cores de Status */
+  --success: #6B8E23;
+  --warning: #FF8C00;
+  --error: #DC2626;
+  --info: #0891B2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --text-primary: #ededed;
+    --background: #1A1A1A;
+    --layout: #2A2A2A;
+    --surface: #333333;
+    --surface-soft: #404040;
+    --text-primary: #F5F5F5;
+    --text-secondary: #CCCCCC;
+    --text-muted: #999999;
   }
 }
 
 @layer base {
-  a {
-    @apply text-text-primary hover:text-primary-500;
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
   }
-}
 
-header {
-  background: var(--layout);
-  color: var(--text-primary);
-}
+  header {
+    background-color: var(--layout);
+    color: var(--text-primary);
+    border-color: rgba(212, 165, 116, 0.2);
+  }
 
-body {
-  background: var(--background);
+  a {
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
 }
 
 @layer utilities {
@@ -73,8 +158,42 @@ body {
   }
 
   .icon:hover {
-    color: var(--primary-500);
+    color: var(--primary);
     transform: scale(1.15);
-    transition: transform 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+
+  /* Animações Suaves */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Efeitos de Glassmorphism */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Sombras Elegantes */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-elegant-hover {
+    box-shadow: var(--shadow-elegant-hover);
+  }
+
+  /* Classes de Animação */
+  .animate-fade-in {
+    animation: var(--animate-fade-in);
+  }
+
+  .animate-slide-up {
+    animation: var(--animate-slide-up);
+  }
+
+  .animate-scale-in {
+    animation: var(--animate-scale-in);
   }
 }
