@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, FeatureCard, Section, Container, Grid, Heading } from "@/components/ui";
-import ProductCarousel from "@/components/ProductCarousel";
+import ProductCarousel from "@/components/carousel/ProductCarousel";
 
 export default function Home() {
   const products = [
@@ -67,9 +67,9 @@ export default function Home() {
               products={products}
               height="h-[500px]"
               autoplayDelay={4000}
-              showNavigation={false}
-              showPagination={false}
-              showButton={false}
+              showNavigation={true}
+              showPagination={true}
+              showButton={true}
               effect="fade"
             />
           </div>

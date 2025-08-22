@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { Container, Grid, Heading } from './ui'
+import { Container, Grid, Heading } from '../ui'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()

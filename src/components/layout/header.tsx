@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { IconButton, Badge, ProductCard } from './ui'
+import { IconButton, Badge, ProductCard } from '../ui'
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

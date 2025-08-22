@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { Button } from "@/components/ui";
+import styles from './ProductCarousel.module.css';
 
-// CSS imports para o Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -27,12 +27,11 @@ interface ProductCarouselProps {
   className?: string;
 }
 
-const ProductCarousel = ({ 
+const ProductCarousel = ({
   products,
   height = "h-[500px]",
   autoplayDelay = 4000,
   showNavigation = true,
-  showPagination = true,
   showButton = true,
   effect = "fade",
   className = ""
@@ -44,10 +43,7 @@ const ProductCarousel = ({
         spaceBetween={0}
         slidesPerView={1}
         navigation={showNavigation}
-        pagination={showPagination ? {
-          clickable: true,
-          dynamicBullets: true,
-        } : false}
+        pagination={false}
         autoplay={{
           delay: autoplayDelay,
           disableOnInteraction: false,
@@ -58,7 +54,11 @@ const ProductCarousel = ({
           crossFade: true
         }}
         loop={true}
-        className={`w-full ${height} rounded-3xl overflow-hidden shadow-2xl`}
+        className={`${styles.customSwiper} w-full ${height} rounded-3xl overflow-hidden shadow-2xl`}
+        style={{
+          '--swiper-navigation-color': 'white',
+          '--swiper-navigation-size': '16px',
+        } as React.CSSProperties}
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
@@ -70,16 +70,16 @@ const ProductCarousel = ({
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority={index === 0}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 text-white transform transition-all duration-500 group-hover:translate-y-[-8px]">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white transform transition-all duration-500 group-hover:translate-y-[-8px] max-w-[calc(100%-3rem)] pr-4">
                 <h3 className="text-2xl font-bold mb-2 drop-shadow-lg">{product.title}</h3>
-                <p className="text-lg opacity-90 drop-shadow-md">{product.description}</p>
+                <p className="text-lg opacity-90 drop-shadow-md mb-3">{product.description}</p>
                 {showButton && (
-                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30"
+                  <div className="transform transition-all duration-500 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="bg-white/50 backdrop-blur-sm border-2 border-gray/80 text-white hover:bg-white/30 hover:border-white hover:text-white cursor-pointer"
                     >
                       Ver Detalhes
                     </Button>

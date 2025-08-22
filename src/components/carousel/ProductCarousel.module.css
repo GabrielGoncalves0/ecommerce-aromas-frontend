@@ -1,0 +1,27 @@
+.customSwiper :global(.swiper-button-next),
+.customSwiper :global(.swiper-button-prev) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: -25px !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.customSwiper :global(.swiper-button-next:hover),
+.customSwiper :global(.swiper-button-prev:hover) {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.customSwiper :global(.swiper-button-next) {
+  right: 20px !important;
+}
+
+.customSwiper :global(.swiper-button-prev) {
+  left: 20px !important;
+}

@@ -1,48 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #FDFCFB;
-  --color-layout: #FFFFFF;
-  --color-surface: #F8F6F4;
-  --color-surface-soft: #F3F1EE;
+  --color-background: #FFFFFF;   /* Branco Neve */
+  --color-layout: #F8F9FA;
+  --color-surface: #F4F5F7;
+  --color-surface-soft: #E9ECEF;
 
-  --color-text-primary: #2D2A26;
-  --color-text-secondary: #6B6B6B;
-  --color-text-muted: #9B9B9B;
+  --color-text-primary: #1C2A39;  /* Azul Carbono */
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #6B7280;
 
   /* Primary Colors */
-  --color-primary: #D4A574;
-  --color-primary-50: #FDF9F4;
-  --color-primary-100: #F9EFE1;
-  --color-primary-200: #F0DCC0;
-  --color-primary-300: #E6C89F;
-  --color-primary-400: #DCB57E;
-  --color-primary-500: #D4A574;
-  --color-primary-600: #C0935D;
-  --color-primary-700: #A67E4D;
-  --color-primary-800: #8B693E;
-  --color-primary-900: #6B4F2E;
+  --color-primary: #1C2A39; /* Azul Carbono */
+  --color-primary-50: #F3F6F9;
+  --color-primary-100: #E2E8F0;
+  --color-primary-200: #CBD5E1;
+  --color-primary-300: #94A3B8;
+  --color-primary-400: #64748B;
+  --color-primary-500: #475569;
+  --color-primary-600: #334155;
+  --color-primary-700: #1C2A39;
+  --color-primary-800: #131E2A;
+  --color-primary-900: #0B121A;
 
   /* Secondary Colors */
-  --color-secondary: #8B7355;
-  --color-secondary-100: #F0ECE6;
-  --color-secondary-200: #D9CDB8;
-  --color-secondary-300: #C2AE8A;
-  --color-secondary-400: #AB8F5C;
-  --color-secondary-500: #8B7355;
-  --color-secondary-600: #6B5742;
-  --color-secondary-700: #4B3B2F;
+  --color-secondary: #B0B8C1; /* Cinza Elegante */
+  --color-secondary-100: #F6F7F9;
+  --color-secondary-200: #E5E8EC;
+  --color-secondary-300: #D4D8DE;
+  --color-secondary-400: #C3C8D1;
+  --color-secondary-500: #B0B8C1;
+  --color-secondary-600: #8E96A0;
+  --color-secondary-700: #6C747E;
 
   /* Accent Colors */
-  --color-accent: #A0937D;
-  --color-accent-light: #C9BFA8;
-  --color-accent-dark: #766B56;
+  --color-accent: #FFB347; /* toque quente (laranja suave) */
+  --color-accent-light: #FFD699;
+  --color-accent-dark: #CC8A00;
 
   /* Status Colors */
-  --color-success: #6B8E23;
-  --color-warning: #FF8C00;
-  --color-error: #DC2626;
-  --color-info: #0891B2;
+  --color-success: #22C55E;  /* verde moderno */
+  --color-warning: #F59E0B;  /* amarelo/laranja */
+  --color-error: #EF4444;    /* vermelho */
+  --color-info: #3B82F6;     /* azul claro */
 
   /* Custom Shadows */
   --shadow-elegant: 0 10px 25px rgba(0, 0, 0, 0.1);
