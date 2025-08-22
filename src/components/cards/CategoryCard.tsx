@@ -16,7 +16,7 @@ export default function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link href={href} className={`block ${className}`}>
-      <div className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1 border border-gray-100">
+      <div className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border border-gray-100">
         {/* Imagem da Categoria */}
         <div className="relative h-56 overflow-hidden">
           <Image

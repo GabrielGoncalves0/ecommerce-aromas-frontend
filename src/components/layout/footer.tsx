@@ -22,18 +22,18 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-primary-200 leading-relaxed">
-                Transformando ambientes através de fragrâncias exclusivas e naturais, 
+                Transformando ambientes através de fragrâncias exclusivas e naturais,
                 criadas com amor e dedicação artesanal.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors">
-                  <Icon icon="mdi:instagram" width="20" height="20" />
+                <a href="#" className="w-12 h-12 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-500/30 hover:scale-120 transition-transform duration-300">
+                  <Icon icon="mdi:instagram" width="24" height="24" className="text-primary-100" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors">
-                  <Icon icon="mdi:facebook" width="20" height="20" />
+                <a href="#" className="w-12 h-12 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-500/30 hover:scale-120 transition-transform duration-300">
+                  <Icon icon="mdi:facebook" width="24" height="24" className="text-primary-100" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors">
-                  <Icon icon="mdi:whatsapp" width="20" height="20" />
+                <a href="#" className="w-12 h-12 bg-primary-700/50 rounded-full flex items-center justify-center hover:bg-primary-500/30 hover:scale-120 transition-transform duration-300">
+                  <Icon icon="mdi:whatsapp" width="24" height="24" className="text-primary-100" />
                 </a>
               </div>
             </div>
@@ -46,26 +46,20 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li>
                   <Link href="/produtos/velas" className="text-primary-200 hover:text-white transition-colors flex items-center space-x-2">
-                    <Icon icon="mdi:candle" width="16" height="16" />
+                    <Icon icon="ri:candle-line" width="22" height="22" />
                     <span>Velas Aromáticas</span>
                   </Link>
                 </li>
                 <li>
                   <Link href="/produtos/difusores" className="text-primary-200 hover:text-white transition-colors flex items-center space-x-2">
-                    <Icon icon="mdi:air-humidifier" width="16" height="16" />
+                    <Icon icon="game-icons:soap" width="22" height="22" />
                     <span>Difusores</span>
                   </Link>
                 </li>
                 <li>
                   <Link href="/produtos/sabonetes" className="text-primary-200 hover:text-white transition-colors flex items-center space-x-2">
-                    <Icon icon="mdi:soap" width="16" height="16" />
+                    <Icon icon="hugeicons:potion" width="22" height="22" />
                     <span>Sabonetes</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/produtos/oleos" className="text-primary-200 hover:text-white transition-colors flex items-center space-x-2">
-                    <Icon icon="mdi:bottle-tonic" width="16" height="16" />
-                    <span>Óleos Essenciais</span>
                   </Link>
                 </li>
               </ul>
