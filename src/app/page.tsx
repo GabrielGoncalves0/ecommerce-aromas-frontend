@@ -2,6 +2,7 @@
 
 import { Button, FeatureCard, Section, Container, Grid, Heading } from "@/components/ui";
 import ProductCarousel from "@/components/carousel/ProductCarousel";
+import CategoryCard from "@/components/cards/CategoryCard";
 
 export default function Home() {
   const products = [
@@ -22,6 +23,24 @@ export default function Home() {
       alt: "Vela em Frasco",
       title: "Velas Premium",
       description: "Elegância em cada detalhe"
+    }
+  ];
+
+  const categories = [
+    {
+      name: "Velas",
+      image: "/img/vela-chantily.jpg",
+      href: "/categoria/velas"
+    },
+    {
+      name: "Sabonetes",
+      image: "/img/sabonetes.jpg",
+      href: "/categoria/sabonetes"
+    },
+    {
+      name: "Difusores",
+      image: "/img/vela-frasco.jpg",
+      href: "/categoria/difusores"
     }
   ];
 
@@ -63,7 +82,7 @@ export default function Home() {
             </div>
 
             {/* Carrossel de Produtos */}
-            <ProductCarousel 
+            <ProductCarousel
               products={products}
               height="h-[500px]"
               autoplayDelay={4000}
@@ -76,121 +95,28 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Showcase de Variações */}
+      {/* Seção de Categorias */}
       <Section padding="xl" background="subtle">
         <Container>
-          <Heading level={2} align="center" className="mb-12">
-            Sistema de Design Elegante
-          </Heading>
-
-          <div className="space-y-12">
-            {/* Variantes de Botões */}
-            <div className="space-y-6">
-              <Heading level={3} align="center" size="lg" color="secondary">
-                Variações de Botões
-              </Heading>
-
-              <div className="flex gap-4 justify-center flex-wrap">
-                <Button variant="primary" icon="mdi:check">Primary</Button>
-                <Button variant="secondary" icon="mdi:star">Secondary</Button>
-                <Button variant="outline" icon="mdi:heart-outline">Outline</Button>
-                <Button variant="ghost" icon="mdi:eye">Ghost</Button>
-                <Button variant="gradient" icon="mdi:sparkles">Gradient</Button>
-              </div>
-
-              {/* Tamanhos */}
-              <div className="flex gap-4 justify-center items-center flex-wrap">
-                <Button size="sm" variant="primary">Small</Button>
-                <Button size="md" variant="primary">Medium</Button>
-                <Button size="lg" variant="primary">Large</Button>
-                <Button size="xl" variant="primary">Extra Large</Button>
-              </div>
-            </div>
-
-            {/* Variantes de FeatureCard */}
-            <div className="space-y-6">
-              <Heading level={3} align="center" size="lg" color="secondary">
-                Estilos de Cards
-              </Heading>
-
-              <Grid cols={3} gap="lg">
-                <FeatureCard
-                  variant="default"
-                  icon="mdi:leaf"
-                  title="Estilo Padrão"
-                  description="Design clean e moderno para informações essenciais."
-                />
-                <FeatureCard
-                  variant="luxury"
-                  icon="mdi:diamond"
-                  title="Estilo Luxuoso"
-                  description="Elegância premium com gradientes e efeitos sofisticados."
-                />
-                <FeatureCard
-                  variant="minimal"
-                  icon="mdi:circle-outline"
-                  title="Estilo Minimal"
-                  description="Simplicidade e foco no conteúdo essencial."
-                />
-              </Grid>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Features Section Melhorada */}
-      <Section variant="featured" padding="xl">
-        <Container>
-          <div className="text-center mb-16">
-            <Heading level={2} gradient className="mb-6">
-              Por que escolher Aromas Noor?
+          <div className="text-center mb-12">
+            <Heading level={2} align="center" className="mb-6 text-4xl font-bold text-gray-900">
+              Categorias
             </Heading>
-            <p className="text-xl text-primary-600 max-w-2xl mx-auto">
-              Descubra a excelência em cada detalhe dos nossos produtos artesanais
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Descubra nossa variedade de produtos aromáticos cuidadosamente selecionados para você
             </p>
           </div>
 
           <Grid cols={3} gap="xl">
-            <FeatureCard
-              variant="luxury"
-              icon="mdi:leaf"
-              title="100% Natural"
-              description="Ingredientes cuidadosamente selecionados da natureza para proporcionar a melhor experiência aromática sustentável."
-            />
-            <FeatureCard
-              variant="luxury"
-              icon="mdi:heart"
-              title="Feito com Amor"
-              description="Cada produto é criado artesanalmente com dedicação e cuidado especial em cada detalhe, do conceito à entrega."
-            />
-            <FeatureCard
-              variant="luxury"
-              icon="mdi:truck-fast"
-              title="Entrega Expressa"
-              description="Receba seus aromas favoritos no conforto da sua casa com nossa entrega rápida e segura em todo o país."
-            />
+            {categories.map((category, index) => (
+              <CategoryCard
+                key={index}
+                name={category.name}
+                image={category.image}
+                href={category.href}
+              />
+            ))}
           </Grid>
-        </Container>
-      </Section>
-
-      {/* Call to Action */}
-      <Section background="gradient" padding="xl">
-        <Container className="text-center">
-          <Heading level={2} className="mb-6 text-primary-800">
-            Pronto para transformar seu ambiente?
-          </Heading>
-          <p className="text-lg text-primary-600 mb-8 max-w-2xl mx-auto">
-            Explore nossa coleção exclusiva e encontre a fragrância perfeita para cada momento especial.
-          </p>
-          <Button
-            size="xl"
-            variant="primary"
-            icon="mdi:arrow-right"
-            iconPosition="right"
-            className="shadow-xl"
-          >
-            Começar Agora
-          </Button>
         </Container>
       </Section>
     </div>
