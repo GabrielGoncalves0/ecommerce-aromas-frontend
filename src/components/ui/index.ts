@@ -4,11 +4,11 @@ export { ProductCard } from './product-card'
 export { FeatureCard } from './feature-card'
 export { Container } from './container'
 export { Typography } from './typography'
-export { default as Input } from './input'
 export { Card } from './card'
 export { Section } from './section'
 export { Grid } from './grid'
 export { Heading } from './heading'
 export { Button } from './button'
+
 
 export type { ButtonProps } from './button'

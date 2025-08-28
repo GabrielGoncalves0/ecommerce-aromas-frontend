@@ -6,8 +6,8 @@ interface FieldBaseProps {
   className?: string;
 }
 
-interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement>, FieldBaseProps {}
-interface FieldNumberProps extends InputHTMLAttributes<HTMLInputElement>, FieldBaseProps {}
+interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement>, FieldBaseProps { }
+interface FieldNumberProps extends InputHTMLAttributes<HTMLInputElement>, FieldBaseProps { }
 
 interface FieldSelectProps extends FieldBaseProps {
   options: { value: string; label: string }[];
@@ -85,13 +85,8 @@ const FieldSelect = forwardRef<HTMLDivElement, FieldSelectProps>(
 
         <div
           ref={ref as any}
-          className={`
-            w-full px-4 py-2 pr-10 border border-gray-400 rounded-lg text-sm text-gray-900 bg-white cursor-pointer
-            focus:outline-none
-            ${className || ''}
-          `}
+          className={`group w-full px-4 py-2 pr-10 border border-gray-400 rounded-lg text-sm text-gray-900 bg-white cursor-pointer focus:outline-none relative ${className || ''}`}
           onClick={() => setOpen(!open)}
-          style={{ position: 'relative' }}
         >
           <span className="flex items-center min-h-[1.25rem] text-gray-600">{selected.label}</span>
           <div className="absolute top-1/2 right-2 -translate-y-1/2 flex items-center pointer-events-none">
@@ -105,21 +100,23 @@ const FieldSelect = forwardRef<HTMLDivElement, FieldSelectProps>(
             </svg>
           </div>
 
-          {open && (
-            <ul className="absolute z-10 left-0 right-0 mt-3 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+          <div
+            className={`absolute z-50 left-0 right-0 mt-3 w-full transition-all duration-200 ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
+          >
+            <ul
+              className="bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto"
+            >
               {options.map((opt) => (
                 <li
                   key={opt.value}
-                  className={`px-4 py-2 cursor-pointerlex justify-between items-center hover:bg-gray-100 ${
-                    selected.value === opt.value ? "bg-gray-100 font-semibold text-gray-900" : ""
-                  }`}
+                  className={`px-4 py-2 cursor-pointer flex justify-between items-center hover:bg-gray-100 ${selected.value === opt.value ? "bg-gray-100 font-semibold text-gray-900" : ""}`}
                   onClick={() => handleSelect(opt)}
                 >
                   <span>{opt.label}</span>
                 </li>
               ))}
             </ul>
-          )}
+          </div>
         </div>
       </div>
     );

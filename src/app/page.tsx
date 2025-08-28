@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Section, Container, Grid, Heading, Input } from "@/components/ui";
+import { Button, Section, Container, Grid, Heading } from "@/components/ui";
 import ProductCarousel from "@/components/carousel/ProductCarousel";
 import CategoryCard from "@/components/cards/CategoryCard";
 import { Field } from "@/components/ui/fields";
@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <Section background="gradient" className="relative overflow-hidden">
+      <Section padding="md" background="gradient" className="relative overflow-hidden">
         <Container size="xl" className="relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Conteúdo Principal */}
@@ -97,7 +97,7 @@ export default function Home() {
       </Section>
 
       {/* Seção de Categorias */}
-      <Section padding="xl" background="subtle">
+      <Section padding="md" background="subtle">
         <Container>
           <div className="text-center mb-12">
             <Heading level={2} align="center" className="mb-6 text-4xl font-bold text-gray-900">
@@ -121,10 +121,14 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section padding="xl" background="subtle">
-        <Container>
+      <Section padding="md" background="subtle">
+        <Container size="xl">
           <div className="text-center mb-8">
-            <Heading level={2} align="center" className="mb-4 text-4xl font-bold text-gray-900">
+            <Heading
+              level={2}
+              align="center"
+              className="mb-4 text-4xl font-bold text-gray-900"
+            >
               Catálogo de Produtos
             </Heading>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -132,92 +136,94 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <Heading level={4} className="text-gray-800 flex items-center gap-2">
-                Filtrar Produtos
-              </Heading>
-            </div>
+          <Grid cols={12} gap="xl">
+            <div className="col-span-12 lg:col-span-3">
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <Heading level={4} className="text-gray-800 flex items-center gap-2">
+                    Filtrar Produtos
+                  </Heading>
+                </div>
 
-            <Grid cols={4} gap="md" className="mb-4">
-              <Field.Text
-                label="Buscar"
-                placeholder="Digite o nome do produto..."
-              />
+                <Grid cols={1} gap="md" className="mb-4">
+                  <Field.Text label="Buscar" placeholder="Digite o nome do produto..." />
 
-              <Field.Select
-                label="Categoria"
-                options={[
-                  { value: "", label: "Todas as categorias" },
-                  { value: "velas", label: "Velas Aromáticas" },
-                  { value: "sabonetes", label: "Sabonetes" },
-                  { value: "difusores", label: "Difusores" },
-                ]}
-              />
+                  <Field.Select
+                    label="Categoria"
+                    options={[
+                      { value: "", label: "Todas as categorias" },
+                      { value: "velas", label: "Velas Aromáticas" },
+                      { value: "sabonetes", label: "Sabonetes" },
+                      { value: "difusores", label: "Difusores" },
+                    ]}
+                  />
 
-              <Field.Select
-                label="Tipo de Produto"
-                options={[
-                  { value: "", label: "Todos os tipos" },
-                  { value: "artesanal", label: "Artesanal" },
-                  { value: "premium", label: "Premium" },
-                  { value: "natural", label: "Natural" },
-                ]}
-              />
+                  <Field.Select
+                    label="Tipo de Produto"
+                    options={[
+                      { value: "", label: "Todos os tipos" },
+                      { value: "artesanal", label: "Artesanal" },
+                      { value: "premium", label: "Premium" },
+                      { value: "natural", label: "Natural" },
+                    ]}
+                  />
 
-              <Field.Select
-                label="Faixa de Preço"
-                options={[
-                  { value: "", label: "Qualquer preço" },
-                  { value: "0-25", label: "R$ 0 - R$ 25" },
-                  { value: "25-50", label: "R$ 25 - R$ 50" },
-                  { value: "50-100", label: "R$ 50 - R$ 100" },
-                  { value: "100+", label: "Acima de R$ 100" },
-                ]}
-              />
-            </Grid>
+                  <Field.Select
+                    label="Faixa de Preço"
+                    options={[
+                      { value: "", label: "Qualquer preço" },
+                      { value: "0-25", label: "R$ 0 - R$ 25" },
+                      { value: "25-50", label: "R$ 25 - R$ 50" },
+                      { value: "50-100", label: "R$ 50 - R$ 100" },
+                      { value: "100+", label: "Acima de R$ 100" },
+                    ]}
+                  />
 
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    iconSize="sm"
+                    rounded="sm"
+                    className="shadow-md"
+                  >
+                    Buscar Produtos
+                  </Button>
 
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-              <div className="flex items-center gap-4">
-                <Button
-                  size="sm"
-                  variant="primary"
-                  iconSize="sm"
-                  rounded="sm"
-                  className="shadow-md"
-                >
-                  Buscar Produtos
-                </Button>
-
-                <Button
-                  size="sm"
-                  variant="outline"
-                  iconSize="sm"
-                  rounded="sm"
-                  className="text-gray-600 border-gray-300 hover:bg-gray-50"
-                >
-                  Limpar Filtros
-                </Button>
-              </div>
-
-              <div className="text-sm text-gray-500">
-                <span className="font-medium">124 produtos</span> encontrados
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    iconSize="sm"
+                    rounded="sm"
+                    className="text-gray-600 border-gray-300 hover:bg-gray-50"
+                  >
+                    Limpar Filtros
+                  </Button>
+                </Grid>
               </div>
             </div>
-          </div>
-          <Grid cols={3} gap="xl">
-            {categories.map((category, index) => (
-              <CategoryCard
-                key={index}
-                name={category.name}
-                image={category.image}
-                href={category.href}
-              />
-            ))}
+
+            {/* Produtos */}
+            <div className="col-span-12 lg:col-span-9">
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <Heading level={4} className="text-gray-800 flex items-center gap-2">
+                    Produtos
+                  </Heading>
+                </div>
+
+                {/* Aqui viria o grid/lista de produtos */}
+                <Grid cols={3} gap="lg">
+                  <div className="h-40 bg-gray-100 rounded-lg"></div>
+                  <div className="h-40 bg-gray-100 rounded-lg"></div>
+                  <div className="h-40 bg-gray-100 rounded-lg"></div>
+                  <div className="h-40 bg-gray-100 rounded-lg"></div>
+                </Grid>
+              </div>
+            </div>
           </Grid>
         </Container>
       </Section>
+
     </div >
   );
 }
