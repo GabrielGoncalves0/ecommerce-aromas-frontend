@@ -3,10 +3,16 @@
 import { Button, Section, Container, Grid, Heading } from "@/components/ui";
 import ProductCarousel from "@/components/carousel/ProductCarousel";
 import CategoryCard from "@/components/cards/CategoryCard";
+import { ProductCard } from "@/components/cards/ProductCard";
 import { Field } from "@/components/ui/fields";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Sparkles, Heart } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+
   const products = [
     {
       src: "/img/sabonetes.jpg",
@@ -28,6 +34,93 @@ export default function Home() {
     }
   ];
 
+  // Dados dos produtos para o catálogo
+  const catalogProducts = [
+    {
+      id: "1",
+      name: "Vela Aromática Lavanda",
+      description: "Vela artesanal com fragrância relaxante de lavanda, perfeita para momentos de tranquilidade",
+      price: 29.90,
+      originalPrice: 39.90,
+      image: "/img/vela-chantily.jpg",
+      category: "Velas",
+      inStock: true,
+      rating: 5
+    },
+    {
+      id: "2",
+      name: "Sabonete Artesanal Rosa",
+      description: "Sabonete natural com pétalas de rosa e óleos essenciais, hidrata e perfuma a pele",
+      price: 15.90,
+      image: "/img/sabonetes.jpg",
+      category: "Sabonetes",
+      inStock: true,
+      rating: 4
+    },
+    {
+      id: "3",
+      name: "Difusor de Ambiente Eucalipto",
+      description: "Difusor com fragrância refrescante de eucalipto, ideal para ambientes amplos",
+      price: 45.90,
+      originalPrice: 55.90,
+      image: "/img/vela-frasco.jpg",
+      category: "Difusores",
+      inStock: true,
+      rating: 5
+    },
+    {
+      id: "4",
+      name: "Vela Premium Baunilha",
+      description: "Vela de soja com aroma doce de baunilha, queima por até 40 horas",
+      price: 35.90,
+      image: "/img/vela-chantily.jpg",
+      category: "Velas",
+      inStock: false,
+      rating: 4
+    },
+    {
+      id: "5",
+      name: "Kit Sabonetes Variados",
+      description: "Conjunto com 3 sabonetes artesanais de fragrâncias diferentes",
+      price: 42.90,
+      originalPrice: 52.90,
+      image: "/img/sabonetes.jpg",
+      category: "Sabonetes",
+      inStock: true,
+      rating: 5
+    },
+    {
+      id: "6",
+      name: "Difusor Reed Jasmim",
+      description: "Difusor com varetas de bambu e essência de jasmim, duração de 60 dias",
+      price: 38.90,
+      image: "/img/vela-frasco.jpg",
+      category: "Difusores",
+      inStock: true,
+      rating: 4
+    },
+    {
+      id: "7",
+      name: "Vela Aromática Canela",
+      description: "Vela com fragrância aconchegante de canela, perfeita para o inverno",
+      price: 27.90,
+      image: "/img/vela-chantily.jpg",
+      category: "Velas",
+      inStock: true,
+      rating: 5
+    },
+    {
+      id: "8",
+      name: "Sabonete Esfoliante Café",
+      description: "Sabonete esfoliante com grãos de café, remove células mortas e energiza",
+      price: 18.90,
+      image: "/img/sabonetes.jpg",
+      category: "Sabonetes",
+      inStock: true,
+      rating: 4
+    }
+  ];
+
   const categories = [
     {
       name: "Velas",
@@ -46,11 +139,22 @@ export default function Home() {
     }
   ];
 
+  // Cálculos da paginação
+  const totalPages = Math.ceil(catalogProducts.length / productsPerPage);
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const endIndex = startIndex + productsPerPage;
+  const currentProducts = catalogProducts.slice(startIndex, endIndex);
+
+  const handleAddToCart = (productId: string) => {
+    console.log("Produto adicionado ao carrinho:", productId);
+    // Aqui você implementaria a lógica de adicionar ao carrinho
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <Section padding="md" background="gradient" className="relative overflow-hidden">
-        <Container size="xl" className="relative z-10">
+        <Container className="relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             {/* Conteúdo Principal */}
             <div className="text-center lg:text-left space-y-8">
@@ -114,7 +218,7 @@ export default function Home() {
       </Section>
 
       <Section padding="md" background="subtitle">
-        <Container size="xl">
+        <Container>
           <div className="text-center mb-8">
             <Heading
               level={2}
@@ -192,19 +296,69 @@ export default function Home() {
             {/* Produtos */}
             <div className="col-span-12 lg:col-span-9">
               <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-6">
                   <Heading level={4} className="text-gray-800 flex items-center gap-2">
-                    Produtos
+                    Produtos ({catalogProducts.length} itens)
                   </Heading>
+                  <div className="text-sm text-gray-500">
+                    Página {currentPage} de {totalPages}
+                  </div>
                 </div>
 
-                {/* Aqui viria o grid/lista de produtos */}
-                <Grid cols={3} gap="lg">
-                  <div className="h-40 bg-gray-100 rounded-lg"></div>
-                  <div className="h-40 bg-gray-100 rounded-lg"></div>
-                  <div className="h-40 bg-gray-100 rounded-lg"></div>
-                  <div className="h-40 bg-gray-100 rounded-lg"></div>
+                {/* Grid de Produtos */}
+                <Grid cols={3} gap="lg" className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+                  {currentProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      name={product.name}
+                      description={product.description}
+                      price={product.price}
+                      originalPrice={product.originalPrice}
+                      image={product.image}
+                      category={product.category}
+                      inStock={product.inStock}
+                      rating={product.rating}
+                      onAddToCart={handleAddToCart}
+                    />
+                  ))}
                 </Grid>
+
+                {/* Paginação */}
+                <div className="flex justify-center">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious
+                          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                          className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                      
+                      {[...Array(totalPages)].map((_, index) => {
+                        const pageNumber = index + 1;
+                        return (
+                          <PaginationItem key={pageNumber}>
+                            <PaginationLink
+                              onClick={() => setCurrentPage(pageNumber)}
+                              isActive={currentPage === pageNumber}
+                              className="cursor-pointer"
+                            >
+                              {pageNumber}
+                            </PaginationLink>
+                          </PaginationItem>
+                        );
+                      })}
+                      
+                      <PaginationItem>
+                        <PaginationNext
+                          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                          className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
               </div>
             </div>
           </Grid>
