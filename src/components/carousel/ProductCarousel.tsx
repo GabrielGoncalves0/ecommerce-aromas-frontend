@@ -12,13 +12,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 
 interface Product {
   src: string;
   alt: string;
   title: string;
   description: string;
+  price?: number;
+  originalPrice?: number;
+  rating?: number;
+  badge?: string;
 }
 
 interface ProductCarouselProps {
@@ -53,15 +57,72 @@ export default function ProductCarousel({
                     priority={index === 0}
                   />
 
-                  <div className="absolute inset-0 bg-black/20 rounded-lg" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
-                    <p className="text-sm opacity-90 mb-4">{product.description}</p>
+                  {/* Badge Promocional */}
+                  {product.badge && (
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg ${
+                        product.badge === "25% OFF" ? "bg-red-500" :
+                        product.badge === "MAIS VENDIDO" ? "bg-green-500" :
+                        product.badge === "LANÇAMENTO" ? "bg-blue-500" :
+                        "bg-purple-500"
+                      }`}>
+                        {product.badge}
+                      </span>
+                    </div>
+                  )}
 
-                    <Button variant="secondary" size="sm" className="bg-white/90 text-black hover:bg-white">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Ver Produto
-                    </Button>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-lg" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    {/* Rating */}
+                    {product.rating && (
+                      <div className="flex items-center gap-1 mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < product.rating! ? "fill-yellow-400 text-yellow-400" : "text-gray-400"
+                            }`}
+                          />
+                        ))}
+                        <span className="text-sm ml-1 opacity-90">({product.rating}.0)</span>
+                      </div>
+                    )}
+
+                    <h3 className="text-xl lg:text-2xl font-bold mb-2">{product.title}</h3>
+                    <p className="text-sm opacity-90 mb-3">{product.description}</p>
+
+                    {/* Preços */}
+                    {product.price && (
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="text-2xl font-bold text-green-400">
+                          R$ {product.price.toFixed(2).replace('.', ',')}
+                        </span>
+                        {product.originalPrice && (
+                          <span className="text-sm text-gray-300 line-through">
+                            R$ {product.originalPrice.toFixed(2).replace('.', ',')}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="secondary" 
+                        size="sm" 
+                        className="bg-white/90 text-black hover:bg-white flex-1"
+                      >
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        Comprar Agora
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="border-white/50 text-white hover:bg-white/20"
+                      >
+                        Ver Detalhes
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

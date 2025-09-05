@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Section, Container, Grid, Heading } from "@/components/ui";
-import ProductCarousel from "@/components/carousel/ProductCarousel";
 import CategoryCard from "@/components/cards/CategoryCard";
 import { ProductCard } from "@/components/cards/ProductCard";
 import { Field } from "@/components/ui/fields";
@@ -13,28 +12,6 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
-  const products = [
-    {
-      src: "/img/sabonetes.jpg",
-      alt: "Sabonetes Artesanais",
-      title: "Sabonetes Naturais",
-      description: "Feitos com ingredientes naturais"
-    },
-    {
-      src: "/img/vela-chantily.jpg",
-      alt: "Vela Chantily",
-      title: "Velas Aromáticas",
-      description: "Fragrância exclusiva Chantily"
-    },
-    {
-      src: "/img/vela-frasco.jpg",
-      alt: "Vela em Frasco",
-      title: "Velas Premium",
-      description: "Elegância em cada detalhe"
-    }
-  ];
-
-  // Dados dos produtos para o catálogo
   const catalogProducts = [
     {
       id: "1",
@@ -152,96 +129,318 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Banner de Oferta */}
+      <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white py-2 text-center">
+        <p className="text-sm font-medium">
+          🔥 OFERTA ESPECIAL: 25% OFF em toda linha de velas aromáticas | Frete GRÁTIS acima de R$ 99
+        </p>
+      </div>
+
       {/* Hero Section */}
       <Section padding="md" background="gradient" className="relative overflow-hidden">
         <Container className="relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] lg:min-h-[80vh]">
             {/* Conteúdo Principal */}
-            <div className="text-center lg:text-left space-y-8">
-              <Heading level={1} gradient className="mb-6">
-                Aromas Noor
+            <div className="text-center lg:text-left space-y-6 lg:space-y-8">
+              <div className="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                ✨ Mais de 5.000 clientes satisfeitos
+              </div>
+
+              <Heading level={1} gradient className="mb-4 lg:mb-6 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
+                Aromas que Transformam
+                <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mt-2">
+                  Ambientes em Experiências
+                </span>
               </Heading>
 
-              <p className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed">
-                Desperte seus sentidos com nossas fragrâncias exclusivas, criadas artesanalmente
-                para transformar cada ambiente em um refúgio de bem-estar e elegância.
+              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-slate-700 mb-8 lg:mb-12 leading-relaxed px-4 lg:px-0">
+                Produtos artesanais premium com <strong>fragrâncias exclusivas</strong>.
+                Entrega rápida, qualidade garantida e preços que cabem no seu bolso.
               </p>
 
-              <div className="flex gap-6 justify-center lg:justify-start flex-wrap">
+              {/* Benefícios */}
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
+                <div className="flex items-center gap-2 bg-white/80 px-3 py-2 rounded-lg">
+                  <span className="text-green-600">✓</span>
+                  <span className="text-sm font-medium">Frete Grátis</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/80 px-3 py-2 rounded-lg">
+                  <span className="text-green-600">✓</span>
+                  <span className="text-sm font-medium">100% Artesanal</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/80 px-3 py-2 rounded-lg">
+                  <span className="text-green-600">✓</span>
+                  <span className="text-sm font-medium">Troca Garantida</span>
+                </div>
+              </div>
+
+              <div className="flex gap-4 lg:gap-6 justify-center lg:justify-start flex-col sm:flex-row">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-xl hover:shadow-2xl"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-xl hover:shadow-2xl text-sm lg:text-base"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
-                  Explorar Produtos
+                  Ver Ofertas Especiais
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2"
+                  className="border-2 text-sm lg:text-base"
                 >
-                  Nossa História
+                  Produtos Mais Vendidos
+                  <Heart className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+
+              {/* Prova Social */}
+              <div className="flex items-center gap-4 justify-center lg:justify-start mt-6">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full border-2 border-white"></div>
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full border-2 border-white"></div>
+                  <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 rounded-full border-2 border-white"></div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  <strong>+2.5k</strong> pedidos este mês
+                </div>
+              </div>
+            </div>
+
+            {/* Grid de Produtos Hero */}
+            <div className="relative">
+              {/* Badge de Destaque */}
+              <div className="text-center mb-6">
+                <div className="inline-block bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-2">
+                  🔥 OFERTAS IMPERDÍVEIS
+                </div>
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-800">
+                  Produtos Selecionados com Desconto
+                </h2>
+              </div>
+
+              {/* Grid de 3 Produtos */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                {catalogProducts.slice(0, 3).map((product) => (
+                  <div key={`hero-${product.id}`} className="group cursor-pointer">
+                    <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      {/* Imagem do Produto */}
+                      <div className="relative aspect-square overflow-hidden">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+
+                        {/* Badge de Oferta */}
+                        {product.originalPrice && (
+                          <div className="absolute top-3 left-3">
+                            <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                              {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Overlay com botão */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <Button
+                            size="sm"
+                            className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+                            onClick={() => handleAddToCart(product.id)}
+                          >
+                            <Sparkles className="w-4 h-4 mr-2" />
+                            Comprar Agora
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Informações do Produto */}
+                      <div className="p-4">
+                        {/* Rating */}
+                        <div className="flex items-center gap-1 mb-2">
+                          {[...Array(5)].map((_, i) => (
+                            <span
+                              key={i}
+                              className={`text-sm ${i < product.rating ? "text-yellow-400" : "text-gray-300"
+                                }`}
+                            >
+                              ★
+                            </span>
+                          ))}
+                          <span className="text-xs text-gray-500 ml-1">({product.rating}.0)</span>
+                        </div>
+
+                        {/* Nome do Produto */}
+                        <h3 className="font-semibold text-gray-900 mb-2 text-sm lg:text-base line-clamp-2">
+                          {product.name}
+                        </h3>
+
+                        {/* Categoria */}
+                        <p className="text-xs text-gray-500 mb-3">{product.category}</p>
+
+                        {/* Preços */}
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-lg lg:text-xl font-bold text-green-600">
+                            R$ {product.price.toFixed(2).replace('.', ',')}
+                          </span>
+                          {product.originalPrice && (
+                            <span className="text-sm text-gray-400 line-through">
+                              R$ {product.originalPrice.toFixed(2).replace('.', ',')}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Botão de Ação */}
+                        <Button
+                          size="sm"
+                          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                          onClick={() => handleAddToCart(product.id)}
+                        >
+                          Adicionar ao Carrinho
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Adicional */}
+              <div className="text-center mt-6">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                >
+                  Ver Todos os Produtos
                   <Heart className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </div>
-
-            {/* Carrossel de Produtos */}
-            <ProductCarousel products={products} />
           </div>
         </Container>
       </Section>
 
-      {/* Seção de Categorias */}
-      <Section padding="md" background="subtitle">
+      <Section padding="md" background="default">
         <Container>
-          <div className="text-center mb-12">
-            <Heading level={2} align="center" className="mb-6 text-4xl font-bold text-gray-900">
-              Categorias
-            </Heading>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Descubra nossa variedade de produtos aromáticos cuidadosamente selecionados para você
+          <div className="text-center mb-8 lg:mb-12">
+            <div className="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-lg font-medium mb-4">
+              ✨ Categorias de Produtos
+            </div>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 lg:px-0">
+              Conheça nossa variedade: velas aromáticas, sabonetes artesanais e difusores de ambiente
             </p>
           </div>
 
-          <Grid cols={3} gap="xl">
-            {categories.map((category, index) => (
-              <CategoryCard
-                key={index}
-                name={category.name}
-                image={category.image}
-                href={category.href}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+            {[
+              {
+                category: "Velas",
+                title: "Velas Aromáticas",
+                description: "Velas artesanais com fragrâncias exclusivas, feitas com cera de soja natural",
+                icon: "🕯️",
+                features: ["100% Natural", "Longa Duração", "Fragrâncias Exclusivas"],
+                image: "/img/vela-chantily.jpg"
+              },
+              {
+                category: "Sabonetes",
+                title: "Sabonetes Artesanais",
+                description: "Sabonetes naturais com óleos essenciais, ideais para todos os tipos de pele",
+                icon: "🧼",
+                features: ["Ingredientes Naturais", "Hidratante", "Sem Químicos"],
+                image: "/img/sabonetes.jpg"
+              },
+              {
+                category: "Difusores",
+                title: "Difusores de Ambiente",
+                description: "Difusores com essências premium que perfumam seu ambiente por semanas",
+                icon: "🌸",
+                features: ["Longa Duração", "Essências Premium", "Design Elegante"],
+                image: "/img/vela-frasco.jpg"
+              }
+            ].map((item, index) => (
+              <div key={item.category} className="group cursor-pointer">
+                <div className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  {/* Imagem do Produto */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+
+                    {/* Overlay com ícone */}
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                      <div className="text-6xl opacity-80">
+                        {item.icon}
+                      </div>
+                    </div>
+
+                    {/* Badge de Categoria */}
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Informações da Categoria */}
+                  <div className="p-6">
+                    {/* Título */}
+                    <h3 className="font-bold text-gray-900 mb-2 text-lg">
+                      {item.title}
+                    </h3>
+
+                    {/* Descrição */}
+                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className="space-y-2 mb-4">
+                      {item.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-2">
+                          <span className="text-green-500 text-sm">✓</span>
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Botão Ver Produtos */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white"
+                    >
+                      Ver {item.category}
+                    </Button>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Grid>
+          </div>
         </Container>
       </Section>
 
-      <Section padding="md" background="subtitle">
+      <Section padding="md" background="gradient">
         <Container>
-          <div className="text-center mb-8">
-            <Heading
-              level={2}
-              align="center"
-              className="mb-4 text-4xl font-bold text-gray-900"
-            >
-              Catálogo de Produtos
-            </Heading>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <div className="text-center mb-6 lg:mb-8">
+            <div className="inline-block bg-sky-200 text-sky-700 px-4 py-2 rounded-full text-lg font-medium mb-4">
+              ✨ Catálogo de Produtos
+            </div>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 lg:px-0">
               Produtos feitos artesanalmente, com materiais de qualidade e muito amor
             </p>
           </div>
 
-          <Grid cols={12} gap="xl">
-            <div className="col-span-12 lg:col-span-3">
-              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            {/* Sidebar de Filtros */}
+            <div className="lg:col-span-3">
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg border border-gray-100 p-4 lg:p-8 mb-6 lg:mb-8">
                 <div className="flex items-center justify-between mb-4">
-                  <Heading level={4} className="text-gray-800 flex items-center gap-2">
+                  <Heading level={4} className="text-gray-800 flex items-center gap-2 text-base lg:text-lg">
                     Filtrar Produtos
                   </Heading>
                 </div>
 
-                <Grid cols={1} gap="md" className="mb-4">
+                <div className="space-y-3 lg:space-y-4">
                   <Field.Text label="Buscar" placeholder="Digite o nome do produto..." />
 
                   <Field.Select
@@ -277,7 +476,7 @@ export default function Home() {
 
                   <Button
                     size="sm"
-                    className="shadow-md"
+                    className="shadow-md w-full"
                   >
                     Buscar Produtos
                   </Button>
@@ -285,28 +484,28 @@ export default function Home() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="text-gray-600 border-gray-300 hover:bg-gray-50"
+                    className="text-gray-600 border-gray-300 hover:bg-gray-50 w-full"
                   >
                     Limpar Filtros
                   </Button>
-                </Grid>
+                </div>
               </div>
             </div>
 
             {/* Produtos */}
-            <div className="col-span-12 lg:col-span-9">
-              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                <div className="flex items-center justify-between mb-6">
-                  <Heading level={4} className="text-gray-800 flex items-center gap-2">
+            <div className="lg:col-span-9">
+              <div className="bg-white rounded-xl lg:rounded-2xl shadow-lg border border-gray-100 p-4 lg:p-8 mb-6 lg:mb-8">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 lg:mb-6 gap-3">
+                  <Heading level={4} className="text-gray-800 flex items-center gap-2 text-base lg:text-lg">
                     Produtos ({catalogProducts.length} itens)
                   </Heading>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-xs sm:text-sm text-gray-500">
                     Página {currentPage} de {totalPages}
                   </div>
                 </div>
 
                 {/* Grid de Produtos */}
-                <Grid cols={3} gap="lg" className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8">
                   {currentProducts.map((product) => (
                     <ProductCard
                       key={product.id}
@@ -322,7 +521,7 @@ export default function Home() {
                       onAddToCart={handleAddToCart}
                     />
                   ))}
-                </Grid>
+                </div>
 
                 {/* Paginação */}
                 <div className="flex justify-center">
@@ -334,7 +533,7 @@ export default function Home() {
                           className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
                         />
                       </PaginationItem>
-                      
+
                       {[...Array(totalPages)].map((_, index) => {
                         const pageNumber = index + 1;
                         return (
@@ -349,7 +548,7 @@ export default function Home() {
                           </PaginationItem>
                         );
                       })}
-                      
+
                       <PaginationItem>
                         <PaginationNext
                           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
@@ -361,7 +560,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </Grid>
+          </div>
         </Container>
       </Section>
 

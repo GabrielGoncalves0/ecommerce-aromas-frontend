@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 interface SectionProps {
   children: ReactNode;
-  padding?: "sm" | "md" | "lg" | "xl";
+  padding?: "xs" | "sm" | "md" | "lg" | "xl";
   background?: "default" | "subtitle" | "gradient";
   className?: string;
 }
@@ -15,6 +15,7 @@ export function Section({
   className 
 }: SectionProps) {
   const paddingClasses = {
+    xs: "py-4",
     sm: "py-8",
     md: "py-16", 
     lg: "py-24",
