@@ -164,9 +164,6 @@ const Footer = () => {
                   <div className="w-10 h-7 bg-white rounded flex items-center justify-center">
                     <Icon icon="simple-icons:pix" className="w-5 h-5 text-green-600" />
                   </div>
-                  <div className="w-10 h-7 bg-white rounded flex items-center justify-center">
-                    <Icon icon="simple-icons:boleto" className="w-7 h-4 text-orange-600" />
-                  </div>
                 </div>
               </div>
             </div>

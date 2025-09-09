@@ -8,7 +8,7 @@ import CatalogSection from "../components/CatalogSection";
 
 export default function HomeView() {
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 12;
 
   const handleAddToCart = (productId: string) => {
     console.log("Produto adicionado ao carrinho:", productId);
