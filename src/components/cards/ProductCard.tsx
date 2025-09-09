@@ -30,7 +30,7 @@ export function ProductCard({
   onAddToCart
 }: ProductCardProps) {
   const hasDiscount = originalPrice && originalPrice > price;
-  const discountPercentage = hasDiscount 
+  const discountPercentage = hasDiscount
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
 
@@ -43,20 +43,19 @@ export function ProductCard({
   return (
     <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white">
       <div className="relative overflow-hidden">
-        {/* Imagem do Produto */}
-        <div className="aspect-square relative bg-gray-50">
+        <div className="relative overflow-hidden aspect-square">
+          {/* Imagem do Produto */}
           <Image
             src={image}
             alt={name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
           />
-          
+
           {/* Badge de Desconto */}
           {hasDiscount && (
-            <Badge 
-              variant="destructive" 
-              className="absolute top-3 left-3 bg-red-500 text-white font-semibold"
+            <Badge
+              className="absolute top-3 bg-red-300 text-red-700 left-3 font-bold text-sm shadow px-3 py-1 rounded-full z-10"
             >
               -{discountPercentage}%
             </Badge>
@@ -65,26 +64,26 @@ export function ProductCard({
 
         <CardContent className="p-4">
           {/* Nome do Produto */}
-          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-md font-semibold text-gray-900line-clamp-2 group-hover:text-blue-600 transition-colors">
             {name}
           </h3>
 
           {/* Preço */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-2">
             <span className="text-xl font-bold text-blue-600">
               R$ {price.toFixed(2)}
             </span>
             {hasDiscount && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className="text-md font-semibold text-gray-700 line-through">
                 R$ {originalPrice.toFixed(2)}
               </span>
             )}
           </div>
 
           {/* Status de Estoque */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2">
             <div className={`w-2 h-2 rounded-full ${inStock ? 'bg-green-500' : 'bg-red-500'}`} />
-            <span className={`text-sm ${inStock ? 'text-green-600' : 'text-red-600'}`}>
+            <span className={`text-sm font-semibold ${inStock ? 'text-green-600' : 'text-red-600'}`}>
               {inStock ? 'Em estoque' : 'Fora de estoque'}
             </span>
           </div>
