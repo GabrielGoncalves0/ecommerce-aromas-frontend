@@ -20,13 +20,10 @@ interface ProductCardProps {
 export function ProductCard({
   id,
   name,
-  description,
   price,
   originalPrice,
   image,
-  category,
   inStock,
-  rating = 5,
   onAddToCart
 }: ProductCardProps) {
   const hasDiscount = originalPrice && originalPrice > price;

@@ -6,7 +6,6 @@ export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 export { Badge } from "./badge";
 export { Section } from "./section";
 export { Container } from "./container";
-export { Grid } from "./grid";
 export { Heading } from "./heading";
 export { Field } from "./fields";
 export { IconButton } from "./icon-button";
