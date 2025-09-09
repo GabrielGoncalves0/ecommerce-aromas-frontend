@@ -61,60 +61,13 @@ export function ProductCard({
               -{discountPercentage}%
             </Badge>
           )}
-
-          {/* Badge de Categoria */}
-          <Badge 
-            variant="secondary" 
-            className="absolute top-3 right-3 bg-white/90 text-gray-700"
-          >
-            {category}
-          </Badge>
-
-          {/* Overlay com ações rápidas */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant="secondary"
-                className="bg-white/90 hover:bg-white text-gray-700 shadow-md"
-              >
-                <Icon icon="mdi:eye" className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="secondary"
-                className="bg-white/90 hover:bg-white text-gray-700 shadow-md"
-              >
-                <Icon icon="mdi:heart-outline" className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
         </div>
 
         <CardContent className="p-4">
-          {/* Rating */}
-          <div className="flex items-center gap-1 mb-2">
-            {[...Array(5)].map((_, i) => (
-              <Icon
-                key={i}
-                icon={i < rating ? "mdi:star" : "mdi:star-outline"}
-                className={`w-4 h-4 ${
-                  i < rating ? "text-yellow-400" : "text-gray-300"
-                }`}
-              />
-            ))}
-            <span className="text-sm text-gray-500 ml-1">({rating}.0)</span>
-          </div>
-
           {/* Nome do Produto */}
           <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
             {name}
           </h3>
-
-          {/* Descrição */}
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-            {description}
-          </p>
 
           {/* Preço */}
           <div className="flex items-center gap-2 mb-4">

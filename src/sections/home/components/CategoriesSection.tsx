@@ -23,7 +23,6 @@ export default function CategoriesSection() {
               title={item.title}
               description={item.description}
               image={item.image}
-              icon={item.icon}
               features={item.features}
             />
           ))}

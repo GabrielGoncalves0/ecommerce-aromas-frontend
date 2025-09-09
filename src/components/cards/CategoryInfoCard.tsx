@@ -5,7 +5,6 @@ interface CategoryInfoCardProps {
   title: string;
   description: string;
   image: string;
-  icon: string;
   features: string[];
   href?: string;
 }
@@ -15,7 +14,6 @@ export default function CategoryInfoCard({
   title,
   description,
   image,
-  icon,
   features,
   href = "#"
 }: CategoryInfoCardProps) {
@@ -29,13 +27,6 @@ export default function CategoryInfoCard({
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-
-          {/* Overlay com ícone */}
-          <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-            <div className="text-6xl opacity-80">
-              {icon}
-            </div>
-          </div>
 
           {/* Badge de Categoria */}
           <div className="absolute top-4 left-4">

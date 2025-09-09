@@ -12,7 +12,7 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ name, image, href, className }: CategoryCardProps) {
   return (
-    <Link href={href} className="group">
+     <Link href={href} className="group">
       <Card className={cn("overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105", className)}>
         <CardContent className="p-0 relative h-64">
           <Image
