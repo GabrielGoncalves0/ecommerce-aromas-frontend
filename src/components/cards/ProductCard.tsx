@@ -46,11 +46,7 @@ export function ProductCard({
   return (
     <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white">
       <div className="relative overflow-hidden">
-<<<<<<< HEAD
         <div className="relative overflow-hidden aspect-square cursor-pointer">
-=======
-        <div className="relative overflow-hidden aspect-square cursor-pointer" onClick={handleRedirect}>
->>>>>>> d9d95296769a20a19b1bdde2f75e2222c67b931d
           {/* Imagem do Produto */}
           <Image
             src={image}
@@ -71,11 +67,7 @@ export function ProductCard({
 
         <CardContent className="p-4">
           {/* Nome do Produto */}
-<<<<<<< HEAD
           <h3 className="text-md font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors cursor-pointer">
-=======
-          <h3 className="text-md font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors cursor-pointer" onClick={handleRedirect}>
->>>>>>> d9d95296769a20a19b1bdde2f75e2222c67b931d
             {name}
           </h3>
 
