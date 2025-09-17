@@ -22,7 +22,7 @@ export function DropdownMenuItem({
   return (
     <Link href={href} className="block">
       <Card className={cn(
-        "bg-gray-200/40 hover:bg-gray-200/80 transition-colors border border-border shadow-none",
+        "bg-gray-200/40 hover:bg-gray-200/80 transition-colors border border-border shadow-none py-2",
         className
       )}>
         <CardContent className="flex items-center space-x-3">
