@@ -40,7 +40,7 @@ export function ProductCard({
   return (
     <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white">
       <div className="relative overflow-hidden">
-        <div className="relative overflow-hidden aspect-square">
+        <div className="relative overflow-hidden aspect-square cursor-pointer">
           {/* Imagem do Produto */}
           <Image
             src={image}
@@ -61,7 +61,7 @@ export function ProductCard({
 
         <CardContent className="p-4">
           {/* Nome do Produto */}
-          <h3 className="text-md font-semibold text-gray-900line-clamp-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-md font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors cursor-pointer">
             {name}
           </h3>
 
